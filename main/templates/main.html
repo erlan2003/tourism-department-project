@@ -7,25 +7,22 @@
     <meta name="keywords" content="Sona, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ваше название</title>
+    <title></title>
 
-    <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap" rel="stylesheet">
 
-    <!-- Css Styles -->
     <link rel="stylesheet" href="static/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="static/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="static/css/style.css" type="text/css">
+    <link rel="stylesheet" href="static/css/main.css" type="text/css">
 </head>
 
 <body>
-    <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
     </div>
 
-    <!-- Offcanvas Menu Section Begin -->
     <div class="offcanvas-menu-overlay"></div>
     <div class="canvas-open">
         <i class="icon_menu"></i>
@@ -78,9 +75,7 @@
             <li><i class="fa fa-envelope"></i> kudajberdieverlan7@gmail.com</li>
         </ul>
     </div>
-    <!-- Offcanvas Menu Section End -->
 
-    <!-- Header Section Begin -->
     <header class="header-section">
         <div class="top-nav">
             <div class="container">
@@ -147,11 +142,88 @@
             </div>
         </div>
     </header>
-    <!-- Header End -->
 
-    <div class="text">Главнаяfeags</div>
+    <div class="slider-container">
+        <div class="slider">
+            <div class="slide active" style="background-image: url('../../static/img/Кел-Суу.JPG');">
+                <div class="slide-text">Откройте для себя новые горизонты</div>
+            </div>
+            <div class="slide" style="background-image: url('../../static/img/Калмак-Ашуу.JPG');">
+                <div class="slide-text">Лучшие направления для отдыха</div>
+            </div>
+            <div class="slide" style="background-image: url('../../static/img/Иссык-Куль.JPG');">
+                <div class="slide-text">Незабываемые впечатления ждут вас</div>
+            </div>
+    
+            <img class="prev controlls" src="../../static/img/left.png" alt="">
+            <img class="next controlls" src="../../static/img/right.png" alt="">
+        </div>
+    </div>
+    
+    
+    <div class="text-tour-type">
+        <h2>Тип тур</h2>
+    </div>
+    
+    <section class="blog-section blog-page spad">
+        <div class="container">
+            <div class="row">
+                <a href="tours"  class="col-lg-4 col-md-6">
+                    <div class="blog-item set-bg" data-setbg="../../static/img/ttt.jpg">
+                        <div class="bi-text">
+                            <span class="b-tag">Экстремальные туры</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="tours" class="col-lg-4 col-md-6">
+                    <div class="blog-item set-bg" data-setbg="../../static/img/bugu.JPG">
+                        <div class="bi-text">
+                            <span class="b-tag">Дикая природа</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="tours" class="col-lg-4 col-md-6">
+                    <div class="blog-item set-bg" data-setbg="../../static/img/IK_XanTengry.JPG">
+                        <div class="bi-text">
+                            <span class="b-tag">Зимние туры</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="tours"class="col-lg-4 col-md-6">
+                    <div class="blog-item set-bg" data-setbg="../../static/img/Салбуурун.JPG">
+                        <div class="bi-text">
+                            <span class="b-tag">Конные туры</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="tours" class="col-lg-4 col-md-6">
+                    <div class="blog-item set-bg" data-setbg="../../static/img/small_item_1318.jpg">
+                        <div class="bi-text">
+                            <span class="b-tag">Велосипедные туры</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="tours" class="col-lg-4 col-md-6">
+                    <div class="blog-item set-bg" data-setbg="../../static/img/Джууку.JPG">
+                        <div class="bi-text">
+                            <span class="b-tag">Однодневные туры</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
 
-    <!-- Footer Section Begin -->
+    <ul>
+        {% for tour_type in tour_types %}
+            <li>
+                <img src="data:image/jpeg;base64,{{ tour_type.type_img }}" alt="{{ tour_type.name }}" width="100">
+                {{ tour_type.name }}
+            </li>
+        {% endfor %}
+    </ul>
+    
+
     <footer class="footer-section">
         <div class="container">
             <div class="footer-text">
@@ -207,18 +279,11 @@
                             <li><a href="#">Environmental Policy</a></li>
                         </ul>
                     </div>
-                    <!-- <div class="col-lg-5">
-                        <div class="co-text"><p>
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-</p></div>
-                    </div> -->
                 </div>
             </div>
         </div>
     </footer>
-    <!-- Footer Section End -->
 
-    <!-- Search model Begin -->
     <div class="search-model">
         <div class="h-100 d-flex align-items-center justify-content-center">
             <div class="search-close-switch"><i class="icon_close"></i></div>
@@ -227,9 +292,7 @@
             </form>
         </div>
     </div>
-    <!-- Search model end -->
 
-    <!-- Js Plugins -->
     <script src="static/js/jquery-3.3.1.min.js"></script>
     <script src="static/js/bootstrap.min.js"></script>
     <script src="static/js/jquery.magnific-popup.min.js"></script>
@@ -238,6 +301,9 @@
     <script src="static/js/jquery.slicknav.js"></script>
     <script src="static/js/owl.carousel.min.js"></script>
     <script src="static/js/main.js"></script>
+    <script src="static/js/slider.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
+
 </body>
 
 </html>
