@@ -271,6 +271,7 @@ ul, ol {
 }
 .top-nav {
 	border-bottom: 1px solid #e5e5e5;
+	
 }
 .top-nav .tn-left li {
 	list-style: none;
@@ -385,9 +386,10 @@ ul, ol {
 .menu-item {
 	position: relative;
 	z-index: 9;
+	background-color: #50A974;
 }
 .menu-item .logo {
-	padding: 25px 0;
+	padding: 0; 
 }
 .menu-item .logo a {
 	display: inline-block;
