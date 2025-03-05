@@ -48,19 +48,11 @@
         </div>
         <nav class="mainmenu mobile-menu">
             <ul>
-                <li class="active"><a href="./index.html">Главная</a></li>
-                <li><a href="./rooms.html">Туры</a></li>
-                <li><a href="./about-us.html">О нас</a></li>
-                <li><a href="./pages.html">Контакты</a>
-                    <ul class="dropdown">
-                        <li><a href="./room-details.html">Room Details</a></li>
-                        <li><a href="#">Deluxe Room</a></li>
-                        <li><a href="#">Family Room</a></li>
-                        <li><a href="#">Premium Room</a></li>
-                    </ul>
-                </li>
-                <li><a href="./blog.html">News</a></li>
-                <li><a href="./contact.html">Contact</a></li>
+                <li class="active"><a href="{% url 'main:main' %}">Главная</a></li>
+                <li><a href="{% url 'tours:tours' %}">Туры</a></li>
+                <li><a href="{% url 'about:about' %}">О нас</a></li>
+                <li><a href="{% url 'contact:contact' %}">Контакты</a>
+                <li><a href="{% url 'services:services' %}">Наши услуги</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -129,11 +121,11 @@
                         <div class="nav-menu">
                             <nav class="mainmenu">
                                 <ul>
-                                    <li class="active"><a href="/">Главная</a></li>
-                                    <li><a href="tours">Туры</a></li>
-                                    <li><a href="about">О нас</a></li>
-                                    <li><a href="contact">Контакты</a></li>
-                                    <li><a href="news">Новости</a></li>
+                                    <li class="active"><a href="{% url 'main:main' %}">Главная</a></li>
+                                    <li><a href="{% url 'tours:tours' %}">Туры</a></li>
+                                    <li><a href="{% url 'about:about' %}">О нас</a></li>
+                                    <li><a href="{% url 'contact:contact' %}">Контакты</a></li>
+                                    <li><a href="{% url 'services:services' %}">Наши услуги</a></li>
                                 </ul>
                             </nav>
                             <div class="nav-right search-switch">

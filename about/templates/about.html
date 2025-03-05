@@ -14,9 +14,9 @@
     <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="static/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="static/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="static/css/style.css" type="text/css">
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="../../static/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="../../static/css/style.css" type="text/css">
 </head>
 
 <body>
@@ -51,19 +51,11 @@
         </div>
         <nav class="mainmenu mobile-menu">
             <ul>
-                <li class="active"><a href="./index.html">Главная</a></li>
-                <li><a href="./rooms.html">Туры</a></li>
-                <li><a href="./about-us.html">О нас</a></li>
-                <li><a href="./pages.html">Контакты</a>
-                    <ul class="dropdown">
-                        <li><a href="./room-details.html">Room Details</a></li>
-                        <li><a href="#">Deluxe Room</a></li>
-                        <li><a href="#">Family Room</a></li>
-                        <li><a href="#">Premium Room</a></li>
-                    </ul>
-                </li>
-                <li><a href="./blog.html">News</a></li>
-                <li><a href="./contact.html">Contact</a></li>
+                <li class="active"><a href="{% url 'main:main' %}">Главная</a></li>
+                <li><a href="{% url 'tours:tours' %}">Туры</a></li>
+                <li><a href="{% url 'about:about' %}">О нас</a></li>
+                <li><a href="{% url 'contact:contact' %}">Контакты</a>
+                <li><a href="{% url 'services:services' %}">Наши услуги</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -131,11 +123,11 @@
                         <div class="nav-menu">
                             <nav class="mainmenu">
                                 <ul>
-                                    <li><a href="/">Главная</a></li>
-                                    <li class="active"><a href="tours">Туры</a></li>
-                                    <li><a href="about">О нас</a></li>
-                                    <li><a href="contact">Контакты</a></li>
-                                    <li><a href="news">Новости</a></li>
+                                    <li><a href="{% url 'main:main' %}">Главная</a></li>
+                                    <li><a href="{% url 'tours:tours' %}">Туры</a></li>
+                                    <li class="active"><a href="{% url 'about:about' %}">О нас</a></li>
+                                    <li><a href="{% url 'contact:contact' %}">Контакты</a></li>
+                                    <li><a href="{% url 'services:services' %}">Наши услуги</a></li>
                                 </ul>
                             </nav>
                             <div class="nav-right search-switch">
@@ -149,10 +141,7 @@
     </header>
     <!-- Header End -->
 
-
-
-    <div class="text">Туры</div>
-
+    <div class="text">О нас</div>
 
     <!-- Footer Section Begin -->
     <footer class="footer-section">
@@ -233,14 +222,14 @@
     <!-- Search model end -->
 
     <!-- Js Plugins -->
-    <script src="static/js/jquery-3.3.1.min.js"></script>
-    <script src="static/js/bootstrap.min.js"></script>
-    <script src="static/js/jquery.magnific-popup.min.js"></script>
-    <script src="static/js/jquery.nice-select.min.js"></script>
-    <script src="static/js/jquery-ui.min.js"></script>
-    <script src="static/js/jquery.slicknav.js"></script>
-    <script src="static/js/owl.carousel.min.js"></script>
-    <script src="static/js/main.js"></script>    
+    <script src="../../static/js/jquery-3.3.1.min.js"></script>
+    <script src="../../static/js/bootstrap.min.js"></script>
+    <script src="../../static/js/jquery.magnific-popup.min.js"></script>
+    <script src="../../static/js/jquery.nice-select.min.js"></script>
+    <script src="../../static/js/jquery-ui.min.js"></script>
+    <script src="../../static/js/jquery.slicknav.js"></script>
+    <script src="../../static/js/owl.carousel.min.js"></script>
+    <script src="../../static/js/main.js"></script>
 </body>
 
 </html>
