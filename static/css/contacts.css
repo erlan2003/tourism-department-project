@@ -1,0 +1,159 @@
+/* Подключение Font Awesome */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css");
+
+/* Базовые стили */
+body {
+    font-family: 'Roboto', sans-serif !important;
+    color: #333 !important;
+    line-height: 1.6 !important;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+    margin: 0 !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif !important;
+    color: #2E8B57 !important;
+}
+
+/* Стили секции */
+.contact-section {
+    padding: 100px 0 !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.contact-section .section-title {
+    font-size: 64px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1) !important;
+    margin-bottom: 20px !important;
+    text-align: center !important;
+}
+
+.contact-section .section-subtitle {
+    font-size: 24px !important;
+    color: #6AA84F !important;
+    margin-bottom: 40px !important;
+    text-align: center !important;
+}
+
+.contact-section .contact-info {
+    background: rgba(255, 255, 255, 0.95) !important;
+    padding: 30px !important;
+    border-radius: 15px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+    margin-bottom: 30px !important;
+}
+
+.contact-info p {
+    font-size: 16px !important;
+    margin: 10px 0 !important;
+    color: #555 !important;
+}
+
+.contact-info i {
+    margin-right: 10px !important;
+    color: #2E8B57 !important;
+}
+
+.contact-section .social-title {
+    font-size: 28px !important;
+    color: #2E8B57 !important;
+    margin-bottom: 20px !important;
+}
+
+.contact-section .social-icons {
+    margin: 20px 0 !important;
+}
+
+.contact-section .social-link {
+    font-size: 40px !important;
+    margin: 0 15px !important;
+    color: #FF6F61 !important;
+    transition: color 0.3s ease !important;
+}
+
+.contact-section .social-link:hover {
+    color: #FFD700 !important;
+}
+
+.contact-section .map-container {
+    margin-bottom: 30px !important;
+    border-radius: 15px !important;
+    overflow: hidden !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+.contact-section .btn-primary {
+    background: linear-gradient(135deg, #6AA84F 0%, #FFD700 100%) !important;
+    border: none !important;
+    padding: 15px 40px !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 20px !important;
+    text-transform: uppercase !important;
+    border-radius: 50px !important;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important;
+    transition: all 0.3s ease !important;
+    display: inline-block !important;
+    color: #fff !important;
+}
+
+.contact-section .btn-primary:hover {
+    background: linear-gradient(135deg, #FF6F61 0%, #FFD700 100%) !important;
+    transform: translateY(-5px) !important;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+.contact-section .form-control {
+    border-radius: 10px !important;
+    border: 1px solid #ddd !important;
+    padding: 10px !important;
+    margin-bottom: 15px !important;
+}
+
+.contact-section .form-control:focus {
+    border-color: #2E8B57 !important;
+    box-shadow: 0 0 5px rgba(46, 139, 87, 0.5) !important;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Адаптивность */
+@media (max-width: 991px) {
+    .contact-section .section-title {
+        font-size: 40px !important;
+    }
+
+    .contact-section .section-subtitle {
+        font-size: 20px !important;
+    }
+
+    .contact-section .contact-info {
+        padding: 20px !important;
+    }
+
+    .contact-section .social-link {
+        font-size: 30px !important;
+    }
+
+    .contact-section .btn-primary {
+        padding: 12px 30px !important;
+        font-size: 18px !important;
+    }
+
+    .contact-section .map-container iframe {
+        height: 300px !important;
+    }
+}

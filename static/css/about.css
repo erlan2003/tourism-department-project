@@ -17,23 +17,23 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Общие стили для секции */
 .about-section {
-    padding: 80px 0 !important;
+    padding: 100px 0 !important; /* Увеличил отступы сверху и снизу */
     position: relative !important;
     overflow: hidden !important;
 }
 
 .about-section .section-title {
-    font-size: 60px !important;
+    font-size: 64px !important; /* Увеличил размер заголовка */
     font-weight: 700 !important;
     text-transform: uppercase !important;
     letter-spacing: 2px !important;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1) !important;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1) !important; /* Добавил тень */
     margin-bottom: 20px !important;
     text-align: center !important;
 }
 
 .about-section .section-subtitle {
-    font-size: 40px !important;
+    font-size: 44px !important; /* Увеличил размер подзаголовков */
     font-weight: 600 !important;
     margin-bottom: 30px !important;
     position: relative !important;
@@ -42,11 +42,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .about-section .section-subtitle::after {
     content: '' !important;
-    width: 50px !important;
-    height: 3px !important;
+    width: 60px !important; /* Увеличил ширину черты */
+    height: 4px !important;
     background: #FF6F61 !important;
     position: absolute !important;
-    bottom: -10px !important;
+    bottom: -15px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
 }
@@ -56,12 +56,15 @@ h1, h2, h3, h4, h5, h6 {
     color: #2E8B57 !important;
     margin-bottom: 20px !important;
     text-align: center !important;
+    max-width: 800px !important; /* Ограничил ширину текста */
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
 .about-section .section-block {
     position: relative !important;
     padding: 40px !important;
-    background: rgba(255, 255, 255, 0.9) !important;
+    background: rgba(255, 255, 255, 0.95) !important; /* Увеличил непрозрачность */
     border-radius: 15px !important;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
     animation: fadeInUp 1s ease !important;
@@ -78,14 +81,14 @@ h1, h2, h3, h4, h5, h6 {
 /* Карточки для ценностей */
 .about-section .value-card {
     background: #fff !important;
-    padding: 30px !important;
+    padding: 25px !important;
     border-radius: 15px !important;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
     transition: transform 0.3s ease, box-shadow 0.3s ease !important;
     text-align: center !important;
-    margin-bottom: 20px !important;
+    margin-bottom: 25px !important; /* Увеличил отступ между карточками */
     animation: fadeIn 1s ease !important;
-    min-height: 300px !important;
+    min-height: 250px !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: space-between !important;
@@ -99,6 +102,7 @@ h1, h2, h3, h4, h5, h6 {
 .about-section .value-card h3 {
     color: #6AA84F !important;
     margin-bottom: 15px !important;
+    font-size: 20px !important;
 }
 
 .about-section .value-card i {
@@ -113,11 +117,11 @@ h1, h2, h3, h4, h5, h6 {
     padding: 20px !important;
     border-radius: 15px !important;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
-    margin-bottom: 20px !important;
+    margin-bottom: 25px !important; /* Увеличил отступ между карточками */
     position: relative !important;
     transition: transform 0.3s ease !important;
     animation: fadeIn 1s ease !important;
-    min-height: 250px !important; /* Уменьшили высоту */
+    min-height: 250px !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: space-between !important;
@@ -153,7 +157,7 @@ h1, h2, h3, h4, h5, h6 {
 .about-section .team-card p {
     font-size: 14px !important;
     margin: 0 !important;
-    color: #333 !important;
+    color: #555 !important; /* Улучшил контраст */
 }
 
 /* Карточки для достижений */
@@ -162,10 +166,10 @@ h1, h2, h3, h4, h5, h6 {
     color: white !important;
     padding: 30px !important;
     border-radius: 15px !important;
-    margin-bottom: 20px !important;
+    margin-bottom: 25px !important; /* Увеличил отступ между карточками */
     text-align: center !important;
     animation: fadeIn 1s ease !important;
-    min-height: 250px !important; /* Уменьшили высоту */
+    min-height: 250px !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: space-between !important;
@@ -187,11 +191,11 @@ h1, h2, h3, h4, h5, h6 {
     padding: 20px !important;
     border-radius: 15px !important;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
-    margin-bottom: 20px !important;
+    margin-bottom: 25px !important; /* Увеличил отступ между карточками */
     position: relative !important;
     transition: transform 0.3s ease !important;
     animation: fadeIn 1s ease !important;
-    min-height: 250px !important; /* Уменьшили высоту */
+    min-height: 250px !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: space-between !important;
@@ -222,9 +226,11 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 16px !important;
     color: #2E8B57 !important;
     margin: 10px 0 !important;
-    padding: 10px 20px !important;
+    padding: 15px !important;
     position: relative !important;
-    border: none !important; /* Убрали вертикальную полосу */
+    border: none !important;
+    background: #f9f9f9 !important; /* Лёгкий фон для цитаты */
+    border-radius: 10px !important;
 }
 
 .about-section .testimonial-card blockquote::before {
@@ -232,8 +238,8 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 30px !important;
     color: #FF6F61 !important;
     position: absolute !important;
-    top: -10px !important;
-    left: 5px !important;
+    top: 5px !important;
+    left: 10px !important;
 }
 
 .about-section .testimonial-card blockquote::after {
@@ -241,12 +247,13 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 30px !important;
     color: #FF6F61 !important;
     position: absolute !important;
-    bottom: -20px !important;
-    right: 5px !important;
+    bottom: -5px !important;
+    right: 10px !important;
 }
 
 .about-section .testimonial-card blockquote p {
     margin: 0 !important;
+    padding: 0 10px !important;
 }
 
 /* CTA */
@@ -298,8 +305,8 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .about-section .value-card, .about-section .team-card, .about-section .achievement-card, .about-section .testimonial-card {
-        margin-bottom: 15px !important;
-        min-height: 200px !important; /* Уменьшили высоту для мобильных устройств */
+        margin-bottom: 20px !important;
+        min-height: 200px !important;
     }
 
     .about-section .btn-primary {

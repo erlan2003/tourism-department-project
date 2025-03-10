@@ -31,7 +31,7 @@
             </div>
 
             <!-- Миссия и ценности -->
-            <div class="row mt-6">
+            <div class="row mt-8"> <!-- Увеличил отступ до mt-8 -->
                 <div class="col-lg-12 text-center">
                     <h2 class="section-subtitle">Наша миссия</h2>
                     <p class="mission-text">Наша миссия — сделать путешествия по Кыргызстану доступными, безопасными и незабываемыми для каждого.</p>
@@ -52,7 +52,7 @@
             </div>
 
             <!-- Команда -->
-            <div class="row mt-6">
+            <div class="row mt-8">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-subtitle">Наша команда</h2>
                 </div>
@@ -63,7 +63,7 @@
                                 {% if member.photo %}
                                     <img src="{{ member.photo.url }}" alt="{{ member.name }}" class="img-fluid rounded-circle team-photo">
                                 {% else %}
-                                    <img src="{% static 'img/placeholder.jpg' %}" alt="Placeholder" class="img-fluid rounded-circle team-photo">
+                                    <img src="{% static 'img/default-avatar.jpg' %}" alt="Default Avatar" class="img-fluid rounded-circle team-photo">
                                 {% endif %}
                                 <h3>{{ member.name }}</h3>
                                 <p class="role">{{ member.role }}</p>
@@ -75,7 +75,7 @@
             </div>
 
             <!-- Достижения -->
-            <div class="row mt-6 text-center">
+            <div class="row mt-8 text-center">
                 <div class="col-lg-12">
                     <h2 class="section-subtitle">Наши достижения</h2>
                 </div>
@@ -92,7 +92,7 @@
             </div>
 
             <!-- Отзывы -->
-            <div class="row mt-6">
+            <div class="row mt-8">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-subtitle">Что говорят наши клиенты</h2>
                 </div>
@@ -103,7 +103,7 @@
                                 {% if testimonial.photo %}
                                     <img src="{{ testimonial.photo.url }}" alt="{{ testimonial.name }}" class="img-fluid rounded-circle testimonial-photo">
                                 {% else %}
-                                    <img src="{% static 'img/placeholder.jpg' %}" alt="Placeholder" class="img-fluid rounded-circle testimonial-photo">
+                                    <img src="{% static 'img/default-avatar.jpg' %}" alt="Default Avatar" class="img-fluid rounded-circle testimonial-photo">
                                 {% endif %}
                                 <blockquote>
                                     <p>{{ testimonial.text }}</p>
@@ -116,7 +116,7 @@
             </div>
 
             <!-- CTA -->
-            <div class="row mt-6 text-center">
+            <div class="row mt-8 text-center">
                 <div class="col-lg-12">
                     <a href="{% url 'tours:tours' %}" class="btn btn-primary">Забронировать тур</a>
                 </div>

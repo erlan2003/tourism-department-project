@@ -271,7 +271,7 @@ ul, ol {
 }
 .top-nav {
 	border-bottom: 1px solid #e5e5e5;
-	
+
 }
 .top-nav .tn-left li {
 	list-style: none;
@@ -389,7 +389,7 @@ ul, ol {
 	background-color: #50A974;
 }
 .menu-item .logo {
-	padding: 0; 
+	padding: 0;
 }
 .menu-item .logo a {
 	display: inline-block;
@@ -610,63 +610,4 @@ ul, ol {
 	font-size: 16px;
 	color: #707079;
 	text-align: right;
-}
-
-
-
-
-
-
-
-
-
-/*
-________________________________________________________________________________________________________________
- */
-
-
-
-
-.header-section {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: #2E8B57; /* Основной цвет NomadSky */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-}
-
-.top-nav {
-    background: #1A5C38; /* Чуть темнее для верхней панели */
-    color: white;
-    padding: 5px 0;
-}
-
-.top-nav ul.tn-left li {
-    display: inline-block;
-    margin-right: 15px;
-    color: white;
-}
-
-.top-nav .tn-right {
-    text-align: right;
-}
-
-.top-nav .top-social a {
-    color: white;
-    margin-left: 10px;
-}
-
-.menu-item {
-    background: #2E8B57;
-    padding: 10px 0;
-}
-
-.nav-menu ul li a {
-    color: white;
-    font-size: 16px;
-}
-
-.nav-menu ul li a:hover {
-    color: #FFD700; /* Золотистый цвет для ховера */
 }

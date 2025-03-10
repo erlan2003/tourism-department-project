@@ -1,18 +1,120 @@
-{% extends 'main/base.html' %}
-{% block title %}Контакты{% endblock %}
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}Контакты | NomadSky{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/contacts.css' %}" type="text/css">
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const messages = document.querySelectorAll('.notification');
+            messages.forEach(msg => {
+                msg.style.display = 'block';
+                setTimeout(() => msg.style.display = 'none', 3500);
+            });
+        });
+    </script>
+{% endblock %}
+
 {% block content %}
-    <section class="contact-section spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2>Контакты</h2>
-                    <ul>
-                        <li><i class="fa fa-phone"></i> 0220-01-95-61</li>
-                        <li><i class="fa fa-envelope"></i> kudajberdieverlan7@gmail.com</li>
-                        <li><i class="fa fa-map-marker"></i> Чокморова 83, г. Бишкек</li>
-                    </ul>
+<section class="contact-section">
+    <div class="container">
+        <!-- Уведомления -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="notification {% if message.tags == 'error' %}error{% else %}success{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <!-- Заголовок -->
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="section-title">Свяжитесь с нами</h1>
+                <p class="section-subtitle">Мы всегда рады ответить на ваши вопросы!</p>
+            </div>
+        </div>
+
+        <!-- Карта и контактная информация -->
+        <div class="row align-items-start">
+            <!-- Левая колонка: Карта -->
+            <div class="col-lg-7 col-md-6">
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d93561.93331202622!2d74.5094895074125!3d42.87684550489957!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x389eb7dcbdacf87b%3A0xfc7d686ab988f348!2z0J_Qu9C-0YnQsNC00Ywg0JDQu9CwLdCi0L7Qvi4!5e0!3m2!1sru!2skg!4v1741627618353!5m2!1sru!2skg" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+
+            <!-- Правая колонка: Контактная информация -->
+            <div class="col-lg-5 col-md-6">
+                {% if contact_info %}
+                    <div class="contact-info-card">
+                        {% if contact_info.address %}
+                            <p class="contact-item"><i class="fas fa-map-marker-alt"></i> {{ contact_info.address }}</p>
+                        {% endif %}
+                        {% if contact_info.email %}
+                            <p class="contact-item"><i class="fas fa-envelope"></i> {{ contact_info.email }}</p>
+                        {% endif %}
+                        {% if contact_info.phone %}
+                            <p class="contact-item"><i class="fas fa-phone"></i> {{ contact_info.phone }} (WhatsApp)</p>
+                        {% endif %}
+                    </div>
+
+                    <!-- Социальные сети -->
+                    <div class="social-section">
+                        <h3 class="social-title">Следите за нами:</h3>
+                        <div class="social-icons">
+                            {% if contact_info.whatsapp_link %}
+                                <a href="{{ contact_info.whatsapp_link }}" target="_blank" class="social-link">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            {% endif %}
+                            {% if contact_info.instagram_link %}
+                                <a href="{{ contact_info.instagram_link }}" target="_blank" class="social-link">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% else %}
+                    <p class="text-center">Контактная информация не настроена.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Кнопка WhatsApp -->
+        <div class="row text-center">
+            <div class="col-12">
+                <a href="{% if contact_info.whatsapp_link %}{{ contact_info.whatsapp_link }}{% else %}#{% endif %}" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Написать нам
+                </a>
+            </div>
+        </div>
+
+        <!-- Форма обратной связи -->
+        <div class="row">
+            <div class="col-lg-6 col-md-8 offset-lg-3 offset-md-2">
+                <div class="contact-form">
+                    <h3 class="form-title">Форма обратной связи</h3>
+                    <form method="post" action="{% url 'contact:submit_message' %}">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <input type="text" class="form-control" name="name" placeholder="Ваше имя" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" name="email" placeholder="Ваш email" required>
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" name="message" rows="5" placeholder="Ваше сообщение" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Отправить сообщение</button>
+                    </form>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 {% endblock %}
