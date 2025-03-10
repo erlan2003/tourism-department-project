@@ -1,14 +1,129 @@
-{% extends 'main/base.html' %}
-{% block title %}О нас{% endblock %}
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}О нас | NomadSky{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/about.css' %}" type="text/css">
+{% endblock %}
+
 {% block content %}
-    <section class="about-section spad">
-        <div class="container">
+<section class="about-section">
+    <div class="container">
+        {% if about_page %}
+            <!-- Заголовок и вступление -->
             <div class="row">
-                <div class="col-lg-12">
-                    <h2>О нас</h2>
-                    <p>Мы - NomadSky, туристическая компания, которая помогает вам открыть красоты природы! Наша миссия - сделать ваше путешествие незабываемым.</p>
+                <div class="col-lg-12 text-center">
+                    <h1 class="section-title">{{ about_page.title }}</h1>
+                    <p class="intro-text">{{ about_page.introduction }}</p>
                 </div>
             </div>
-        </div>
-    </section>
+
+            <!-- История компании -->
+            <div class="row mt-6">
+                <div class="col-lg-12">
+                    <div class="section-block">
+                        <h2 class="section-subtitle">Наша история</h2>
+                        <p>{{ about_page.history }}</p>
+                        <i class="fas fa-mountain section-icon"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Миссия и ценности -->
+            <div class="row mt-6">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-subtitle">Наша миссия</h2>
+                    <p class="mission-text">Наша миссия — сделать путешествия по Кыргызстану доступными, безопасными и незабываемыми для каждого.</p>
+                </div>
+            </div>
+            <div class="row mt-4 align-items-stretch justify-content-center">
+                {% for value in about_page.values.all %}
+                    <div class="col-lg-4 col-md-6 d-flex">
+                        <div class="value-card flex-fill">
+                            <h3>{{ value.title }}</h3>
+                            <p>{{ value.description }}</p>
+                            {% if value.title == "Экологичность" %}<i class="fas fa-leaf"></i>{% endif %}
+                            {% if value.title == "Поддержка местных" %}<i class="fas fa-users"></i>{% endif %}
+                            {% if value.title == "Качество" %}<i class="fas fa-star"></i>{% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <!-- Команда -->
+            <div class="row mt-6">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-subtitle">Наша команда</h2>
+                </div>
+                <div class="row align-items-stretch">
+                    {% for member in about_page.team_members.all %}
+                        <div class="col-lg-4 col-md-6 d-flex">
+                            <div class="team-card flex-fill text-center">
+                                {% if member.photo %}
+                                    <img src="{{ member.photo.url }}" alt="{{ member.name }}" class="img-fluid rounded-circle team-photo">
+                                {% else %}
+                                    <img src="{% static 'img/placeholder.jpg' %}" alt="Placeholder" class="img-fluid rounded-circle team-photo">
+                                {% endif %}
+                                <h3>{{ member.name }}</h3>
+                                <p class="role">{{ member.role }}</p>
+                                <p>{{ member.description }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Достижения -->
+            <div class="row mt-6 text-center">
+                <div class="col-lg-12">
+                    <h2 class="section-subtitle">Наши достижения</h2>
+                </div>
+                <div class="row align-items-stretch">
+                    {% for achievement in about_page.achievements.all %}
+                        <div class="col-lg-4 col-md-6 d-flex">
+                            <div class="achievement-card flex-fill">
+                                <h3>{{ achievement.number }}</h3>
+                                <p>{{ achievement.description }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Отзывы -->
+            <div class="row mt-6">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-subtitle">Что говорят наши клиенты</h2>
+                </div>
+                <div class="row align-items-stretch">
+                    {% for testimonial in about_page.testimonials.all %}
+                        <div class="col-lg-4 col-md-6 d-flex">
+                            <div class="testimonial-card flex-fill text-center">
+                                {% if testimonial.photo %}
+                                    <img src="{{ testimonial.photo.url }}" alt="{{ testimonial.name }}" class="img-fluid rounded-circle testimonial-photo">
+                                {% else %}
+                                    <img src="{% static 'img/placeholder.jpg' %}" alt="Placeholder" class="img-fluid rounded-circle testimonial-photo">
+                                {% endif %}
+                                <blockquote>
+                                    <p>{{ testimonial.text }}</p>
+                                </blockquote>
+                                <h3>{{ testimonial.name }}</h3>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="row mt-6 text-center">
+                <div class="col-lg-12">
+                    <a href="{% url 'tours:tours' %}" class="btn btn-primary">Забронировать тур</a>
+                </div>
+            </div>
+        {% else %}
+            <p>Страница "О нас" ещё не настроена.</p>
+        {% endif %}
+    </div>
+</section>
 {% endblock %}
