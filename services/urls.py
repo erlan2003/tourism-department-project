@@ -1,9 +1,8 @@
 from django.urls import path
-
-from services import views
+from . import views
 
 app_name = 'services'
 
 urlpatterns = [
-       path('', views.open_services, name='services'),
+    path('', views.services_page, name='services'),
 ]
