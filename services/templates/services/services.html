@@ -1,18 +1,86 @@
-{% extends 'main/base.html' %}
-{% block title %}Наши услуги{% endblock %}
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}Дополнительные услуги | NomadSky{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/services.css' %}" type="text/css">
+{% endblock %}
+
 {% block content %}
-    <section class="services-section spad">
-        <div class="container">
+<section class="services-section">
+    <div class="container">
+        <!-- Заголовок -->
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="section-title">Дополнительные услуги</h1>
+                <p class="section-subtitle">Сделайте своё путешествие ещё комфортнее!</p>
+            </div>
+        </div>
+
+        <!-- Список услуг -->
+        {% for service in services %}
+            <div class="row service-row align-items-center mb-5" style="--index: {{ forloop.counter }}">
+                <!-- Фотография -->
+                <div class="col-lg-4 col-md-5">
+                    {% if service.image %}
+                        <img src="{{ service.image.url }}" alt="{{ service.title }}" class="service-image">
+                    {% else %}
+                        <img src="{% static 'img/placeholder.jpg' %}" alt="Placeholder" class="service-image">
+                    {% endif %}
+                </div>
+                <!-- Описание -->
+                <div class="col-lg-8 col-md-7">
+                    <div class="service-content">
+                        <h3 class="service-title">{{ service.title }}</h3>
+                        <p class="service-description">{{ service.description }}</p>
+                        <p class="service-details">Уточните стоимость и детали у нас!</p>
+                        <a href="{% url 'contact:contact' %}" class="btn btn-primary">Связаться</a>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
             <div class="row">
-                <div class="col-lg-12">
-                    <h2>Наши услуги</h2>
-                    <ul class="services-list">
-                        {% for service in services %}
-                            <li>{{ service.name }} - {{ service.description }}</li>
-                        {% endfor %}
-                    </ul>
+                <div class="col-12 text-center">
+                    <p>Услуги пока не добавлены.</p>
+                </div>
+            </div>
+        {% endfor %}
+
+        <!-- Секция "Почему выбирают нас?" -->
+        <div class="row benefits-section">
+            <div class="col-12 text-center">
+                <h2 class="benefits-title">Почему выбирают нас?</h2>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="benefit-card">
+                    <i class="fas fa-user-tie benefit-icon"></i>
+                    <h3 class="benefit-title">Опытные специалисты</h3>
+                    <p class="benefit-description">Наши гиды и водители — профессионалы с многолетним опытом.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="benefit-card">
+                    <i class="fas fa-clock benefit-icon"></i>
+                    <h3 class="benefit-title">Гибкость</h3>
+                    <p class="benefit-description">Мы подстраиваемся под ваши пожелания и расписание.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="benefit-card">
+                    <i class="fas fa-heart benefit-icon"></i>
+                    <h3 class="benefit-title">Забота о клиентах</h3>
+                    <p class="benefit-description">Ваш комфорт и безопасность — наш приоритет.</p>
                 </div>
             </div>
         </div>
-    </section>
+
+        <!-- Призыв к действию -->
+        <div class="row text-center">
+            <div class="col-12">
+                <a href="{% url 'tours:tours' %}" class="cta-btn">Забронировать тур</a>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}
