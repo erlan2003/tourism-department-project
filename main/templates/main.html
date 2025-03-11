@@ -49,7 +49,14 @@
         <nav class="mainmenu mobile-menu">
             <ul>
                 <li class="active"><a href="{% url 'main:main' %}">Главная</a></li>
-                <li><a href="{% url 'tours:tours' %}">Туры</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Туры</a>
+                    <ul class="dropdown-menu">
+                        {% for tour_type in tour_types %}
+                            <li><a class="dropdown-item" href="{% url 'tours:tours' type_id=tour_type.id %}">{{ tour_type.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
                 <li><a href="{% url 'about:about' %}">О нас</a></li>
                 <li><a href="{% url 'contact:contact' %}">Контакты</a>
                 <li><a href="{% url 'services:services' %}">Наши услуги</a></li>
@@ -113,7 +120,7 @@
                     <div class="col-lg-2">
                         <div class="logo">
                             <a href="/">
-                                <img src="../../static/icon/logo-ver4.svg" alt="" width="140" height="100">
+                                <img src="../../static/icon/logo-ver4.svg" alt="" width="140" height="70">
                             </a>
                         </div>
                     </div>
@@ -122,7 +129,14 @@
                             <nav class="mainmenu">
                                 <ul>
                                     <li class="active"><a href="{% url 'main:main' %}">Главная</a></li>
-                                    <li><a href="{% url 'tours:tours' %}">Туры</a></li>
+                                    <li class="dropdown">
+                                        <a href="#">Туры <i class="icon_arrow_down"></i></a>
+                                        <ul class="dropdown-menu">
+                                            {% for tour_type in tour_types %}
+                                            <li><a href="{% url 'tours:tours' type_id=tour_type.id %}">{{ tour_type.name }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
                                     <li><a href="{% url 'about:about' %}">О нас</a></li>
                                     <li><a href="{% url 'contact:contact' %}">Контакты</a></li>
                                     <li><a href="{% url 'services:services' %}">Наши услуги</a></li>
@@ -133,12 +147,50 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
     </header>
 
     <div class="slider-container">
+        <div class="slider">
+            <div class="slide">
+                <div class="slide-images">
+                    <img src="../../static/img/Кел-Суу.JPG" alt="Кел-Суу">
+                    <img src="../../static/img/Калмак-Ашуу.JPG" alt="Калмак-Ашуу">
+                    <img src="../../static/img/Иссык-Куль.JPG" alt="Иссык-Куль">
+                </div>
+                <div class="slide-text">Путешествуйте по Кыргызстану</div>
+                <a href="/tours/1" class="tour-button">Просмотреть туры</a>
+            </div>
+            <div class="slide">
+                <div class="slide-images">
+                    <img src="../../static/img/Кел-Суу.JPG" alt="Сон-Куль">
+                    <img src="../../static/img/Калмак-Ашуу.JPG" alt="Ала-Арча">
+                    <img src="../../static/img/Иссык-Куль.JPG" alt="Сары-Челек">
+                </div>
+                <div class="slide-text">Озера и горные долины ждут вас</div>
+                <a href="/tours/2" class="tour-button">Просмотреть туры</a>
+            </div>
+            <div class="slide">
+                <div class="slide-images">
+                    <img src="../../static/img/Кел-Суу.JPG" alt="Чатыр-Коль">
+                    <img src="../../static/img/Калмак-Ашуу.JPG" alt="Тянь-Шань">
+                    <img src="../../static/img/Иссык-Куль.JPG" alt="Каракол">
+                </div>
+                <div class="slide-text">Исследуйте дикие просторы</div>
+                <a href="/tours/3" class="tour-button">Просмотреть туры</a>
+            </div>
+        </div>
+        <button class="controls prev">&#10094;</button>
+        <button class="controls next">&#10095;</button>
+    </div>
+
+
+
+
+    <!-- <div class="slider-container">
         <div class="slider">
             <div class="slide active" style="background-image: url('../../static/img/Кел-Суу.JPG');">
                 <div class="slide-text">Откройте для себя новые горизонты</div>
@@ -153,7 +205,7 @@
             <img class="prev controlls" src="../../static/img/left.png" alt="">
             <img class="next controlls" src="../../static/img/right.png" alt="">
         </div>
-    </div>
+    </div> -->
 
 
     <div class="text-tour-type">
@@ -163,60 +215,21 @@
     <section class="blog-section blog-page spad">
         <div class="container">
             <div class="row">
-                <a href="tours"  class="col-lg-4 col-md-6">
-                    <div class="blog-item set-bg" data-setbg="../../static/img/ttt.jpg">
-                        <div class="bi-text">
-                            <span class="b-tag">Экстремальные туры</span>
-                        </div>
+                {% for tour_type in tour_types %}
+                    <div class="col-lg-4 col-md-6">
+                        <a href="{% url 'tours:tours' type_id=tour_type.id %}" class="tour-card">
+                            <div class="tour-card-image"
+                                 style="background-image: url('{{ tour_type.type_img.url }}');">
+                            </div>
+                            <div class="tour-card-overlay">
+                                <span class="tour-card-title">{{ tour_type.name }}</span>
+                            </div>
+                        </a>
                     </div>
-                </a>
-                <a href="tours" class="col-lg-4 col-md-6">
-                    <div class="blog-item set-bg" data-setbg="../../static/img/bugu.JPG">
-                        <div class="bi-text">
-                            <span class="b-tag">Дикая природа</span>
-                        </div>
-                    </div>
-                </a>
-                <a href="tours" class="col-lg-4 col-md-6">
-                    <div class="blog-item set-bg" data-setbg="../../static/img/IK_XanTengry.JPG">
-                        <div class="bi-text">
-                            <span class="b-tag">Зимние туры</span>
-                        </div>
-                    </div>
-                </a>
-                <a href="tours"class="col-lg-4 col-md-6">
-                    <div class="blog-item set-bg" data-setbg="../../static/img/Салбуурун.JPG">
-                        <div class="bi-text">
-                            <span class="b-tag">Конные туры</span>
-                        </div>
-                    </div>
-                </a>
-                <a href="tours" class="col-lg-4 col-md-6">
-                    <div class="blog-item set-bg" data-setbg="../../static/img/small_item_1318.jpg">
-                        <div class="bi-text">
-                            <span class="b-tag">Велосипедные туры</span>
-                        </div>
-                    </div>
-                </a>
-                <a href="tours" class="col-lg-4 col-md-6">
-                    <div class="blog-item set-bg" data-setbg="../../static/img/Джууку.JPG">
-                        <div class="bi-text">
-                            <span class="b-tag">Однодневные туры</span>
-                        </div>
-                    </div>
-                </a>
+                {% endfor %}
             </div>
         </div>
     </section>
-
-    <ul>
-        {% for tour_type in tour_types %}
-            <li>
-                <img src="data:image/jpeg;base64,{{ tour_type.type_img }}" width="100">
-                {{ tour_type.name }}
-            </li>
-        {% endfor %}
-    </ul>
 
 
     <footer class="footer-section">

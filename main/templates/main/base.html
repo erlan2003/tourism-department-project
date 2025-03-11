@@ -54,7 +54,15 @@
         <nav class="mainmenu mobile-menu">
             <ul>
                 <li><a href="{% url 'main:main' %}">Главная</a></li>
-                <li><a href="{% url 'tours:tours' %}">Туры</a></li>
+{#                <li><a href="{% url 'tours:tours' %}">Туры</a></li>#}
+                <li class="dropdown">
+                    <a href="#">Туры <i class="icon_arrow_down"></i></a>
+                    <ul class="dropdown-menu">
+                        {% for tour_type in tour_types %}
+                        <li><a href="{% url 'tours:tours' type_id=tour_type.id %}">{{ tour_type.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
                 <li><a href="{% url 'about:about' %}">О нас</a></li>
                 <li><a href="{% url 'contact:contact' %}">Контакты</a></li>
                 <li><a href="{% url 'services:services' %}">Наши услуги</a></li>
@@ -116,7 +124,7 @@
                     <div class="col-lg-2">
                         <div class="logo">
                             <a href="/">
-                                <img src="{% static 'icon/logo-ver4.svg' %}" alt="" width="140" height="100">
+                                <img src="{% static 'icon/logo-ver4.svg' %}" alt="" width="140" height="70">
                             </a>
                         </div>
                     </div>
@@ -125,7 +133,15 @@
                             <nav class="mainmenu">
                                 <ul>
                                     <li><a href="{% url 'main:main' %}">Главная</a></li>
-                                    <li><a href="{% url 'tours:tours' %}">Туры</a></li>
+{#                                    <li><a href="{% url 'tours:tours' %}">Туры</a></li>#}
+                                    <li class="dropdown">
+                    <a href="#">Туры <i class="icon_arrow_down"></i></a>
+                    <ul class="dropdown-menu">
+                        {% for tour_type in tour_types %}
+                        <li><a href="{% url 'tours:tours' type_id=tour_type.id %}">{{ tour_type.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
                                     <li><a href="{% url 'about:about' %}">О нас</a></li>
                                     <li><a href="{% url 'contact:contact' %}">Контакты</a></li>
                                     <li><a href="{% url 'services:services' %}">Наши услуги</a></li>

@@ -1,0 +1,196 @@
+/* Общие стили */
+.tours-section {
+    padding: 60px 0; /* Уменьшили отступ сверху и снизу секции (было 100px) */
+    background-image: url('/static/img/background-mountains.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    z-index: 1;
+}
+
+.tours-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    z-index: -1;
+}
+
+/* Заголовки */
+.section-title {
+    font-family: 'Lora', serif;
+    font-size: 2.8rem; /* Уменьшили размер заголовка (было 3rem) */
+    font-weight: 700;
+    margin-bottom: 10px; /* Уменьшили отступ снизу (было 15px) */
+    text-align: center;
+    color: #1a3c34;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.section-subtitle {
+    font-size: 1.1rem; /* Уменьшили размер подзаголовка (было 1.2rem) */
+    color: #6c757d;
+    text-align: center;
+    margin-bottom: 40px; /* Уменьшили отступ снизу (было 70px) */
+    font-style: italic;
+}
+
+/* Тур */
+.tour-list {
+    margin-top: 20px; /* Уменьшили отступ сверху (было 40px) */
+}
+
+.tour-item {
+    margin-bottom: 40px; /* Уменьшили отступ снизу (было 60px) */
+    background: linear-gradient(135deg, #ffffff, #f1f5f9);
+    border-radius: 12px; /* Уменьшили радиус скругления (было 15px) */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Уменьшили тень */
+    padding: 20px; /* Уменьшили внутренний отступ (было 30px) */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tour-item:hover {
+    transform: translateY(-5px); /* Уменьшили эффект поднятия (было -10px) */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.tour-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.tour-img {
+    width: 100%;
+    height: 180px; /* Уменьшили высоту изображения (было 220px) */
+    object-fit: cover;
+    border-radius: 8px; /* Уменьшили радиус скругления (было 10px) */
+    border: 1px solid #e9ecef; /* Уменьшили толщину рамки (было 2px) */
+    transition: transform 0.3s ease;
+}
+
+.tour-img:hover {
+    transform: scale(1.03); /* Уменьшили эффект масштабирования (было 1.05) */
+}
+
+.tour-details {
+    padding: 15px; /* Уменьшили внутренний отступ (было 25px) */
+}
+
+.tour-title {
+    font-family: 'Lora', serif;
+    font-size: 1.7rem; /* Уменьшили размер заголовка (было 1.9rem) */
+    font-weight: 600;
+    margin-bottom: 10px; /* Уменьшили отступ снизу (было 15px) */
+    color: #1a3c34;
+}
+
+.tour-description {
+    font-size: 1rem; /* Уменьшили размер текста (было 1.1rem) */
+    color: #6c757d;
+    margin-bottom: 15px; /* Уменьшили отступ снизу (было 20px) */
+    line-height: 1.5; /* Уменьшили высоту строки (было 1.6) */
+}
+
+.tour-info p {
+    font-size: 0.95rem; /* Уменьшили размер текста (было 1rem) */
+    color: #6c757d;
+    margin-bottom: 8px; /* Уменьшили отступ снизу (было 10px) */
+}
+
+.tour-info i {
+    color: #27ae60;
+    margin-right: 6px; /* Уменьшили отступ справа (было 8px) */
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    border: none;
+    border-radius: 20px; /* Уменьшили радиус скругления (было 25px) */
+    padding: 10px 25px; /* Уменьшили размеры кнопки (было 12px 30px) */
+    font-size: 0.95rem; /* Уменьшили размер текста (было 1rem) */
+    font-weight: 500;
+    color: white;
+    transition: background 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    transform: scale(1.03); /* Уменьшили эффект масштабирования (было 1.05) */
+}
+
+/* Анимации */
+.tour-item {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-in-out forwards; /* Ускорили анимацию (было 1s) */
+    animation-delay: calc(0.15s * var(--index)); /* Уменьшили задержку (было 0.2s) */
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Уменьшили смещение (было 30px) */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Адаптивность */
+@media (max-width: 991px) {
+    .tour-item .row {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .tour-img {
+        height: 200px; /* Уменьшили высоту для планшетов (было 250px) */
+        margin-bottom: 15px; /* Уменьшили отступ снизу (было 20px) */
+    }
+
+    .tour-details {
+        padding: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .tours-section {
+        padding: 40px 0; /* Ещё больше уменьшили отступы для мобильных */
+    }
+
+    .section-title {
+        font-size: 2rem; /* Уменьшили размер заголовка (было 2.2rem) */
+    }
+
+    .section-subtitle {
+        font-size: 0.9rem; /* Уменьшили размер подзаголовка (было 1rem) */
+        margin-bottom: 30px; /* Уменьшили отступ (было 40px) */
+    }
+
+    .tour-img {
+        height: 160px; /* Уменьшили высоту изображения (было 200px) */
+    }
+
+    .tour-title {
+        font-size: 1.4rem; /* Уменьшили размер заголовка (было 1.6rem) */
+    }
+
+    .tour-description {
+        font-size: 0.9rem; /* Уменьшили размер текста (было 1rem) */
+    }
+
+    .tour-info p {
+        font-size: 0.85rem; /* Уменьшили размер текста (было 0.9rem) */
+    }
+
+    .btn-primary {
+        padding: 8px 20px; /* Уменьшили размеры кнопки (было 10px 25px) */
+        font-size: 0.85rem; /* Уменьшили размер текста (было 0.9rem) */
+    }
+}

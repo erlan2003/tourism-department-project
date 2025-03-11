@@ -1,44 +1,52 @@
+const slider = document.querySelector('.slider');
 const slides = document.querySelectorAll('.slide');
-const controls = document.querySelectorAll('.controlls');
-let currentIndex = 0;
-let interval;
+const prev = document.querySelector('.prev');
+const next = document.querySelector('.next');
+const sliderText = document.getElementById('slider-text');
+const tourButtons = document.querySelectorAll('.tour-button');
+let index = 0;
 
-// Функция показа слайда с анимацией
-function showSlide(index) {
-    slides.forEach(slide => slide.classList.remove('active'));
-    slides[index].classList.add('active');
+const texts = [
+    "Откройте для себя новые горизонты",
+    "Лучшие направления для отдыха",
+    "Незабываемые впечатления ждут вас",
+    "Путешествуйте с комфортом",
+    "Природа, которую стоит увидеть"
+];
+
+function showSlide(i) {
+    slider.style.transition = "transform 1s ease-in-out";
+    slider.style.transform = `translateX(-${i * 100}%)`;
+    sliderText.textContent = texts[i];
 }
 
-// Функция смены слайда
 function nextSlide() {
-    currentIndex = (currentIndex + 1) % slides.length;
-    showSlide(currentIndex);
+    index = (index + 1) % slides.length;
+    showSlide(index);
 }
 
-// Авто-переключение каждые 3 секунды
-function startAutoSlide() {
-    interval = setInterval(nextSlide, 7000);
-}
-
-// Остановка при клике
-function stopAutoSlide() {
-    clearInterval(interval);
-}
-
-// Обработчики кликов для кнопок
-controls.forEach(control => {
-    control.addEventListener('click', (event) => {
-        stopAutoSlide();
-        if (event.target.classList.contains('prev')) {
-            currentIndex = currentIndex - 1 < 0 ? slides.length - 1 : currentIndex - 1;
-        } else if (event.target.classList.contains('next')) {
-            currentIndex = (currentIndex + 1) % slides.length;
-        }
-        showSlide(currentIndex);
-        startAutoSlide();
-    });
+prev.addEventListener('click', () => {
+    index = (index === 0) ? slides.length - 1 : index - 1;
+    showSlide(index);
 });
 
-// Запуск слайдера
-showSlide(currentIndex);
-startAutoSlide();
+next.addEventListener('click', () => {
+    nextSlide();
+});
+
+// Автоматическая смена слайдов каждые 5 секунд
+setInterval(() => {
+    nextSlide();
+}, 5000);
+
+// Стилизация кнопок "Просмотреть туры" при наведении
+tourButtons.forEach(button => {
+    button.addEventListener('mouseover', () => {
+        button.style.background = "#e65b50";
+        button.style.transform = "scale(1.1)";
+    });
+    button.addEventListener('mouseleave', () => {
+        button.style.background = "#ff6f61";
+        button.style.transform = "scale(1)";
+    });
+});
