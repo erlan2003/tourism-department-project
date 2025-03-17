@@ -1,52 +1,57 @@
-const slider = document.querySelector('.slider');
 const slides = document.querySelectorAll('.slide');
-const prev = document.querySelector('.prev');
-const next = document.querySelector('.next');
-const sliderText = document.getElementById('slider-text');
-const tourButtons = document.querySelectorAll('.tour-button');
-let index = 0;
+const controls = document.querySelectorAll('.controlls');
+let currentIndex = 0;
+let interval;
+let scrollPosition = 0;
 
-const texts = [
-    "Откройте для себя новые горизонты",
-    "Лучшие направления для отдыха",
-    "Незабываемые впечатления ждут вас",
-    "Путешествуйте с комфортом",
-    "Природа, которую стоит увидеть"
-];
-
-function showSlide(i) {
-    slider.style.transition = "transform 1s ease-in-out";
-    slider.style.transform = `translateX(-${i * 100}%)`;
-    sliderText.textContent = texts[i];
+function showSlide(index) {
+    slides.forEach(slide => slide.classList.remove('active'));
+    slides[index].classList.add('active');
 }
 
 function nextSlide() {
-    index = (index + 1) % slides.length;
-    showSlide(index);
+    currentIndex = (currentIndex + 1) % slides.length;
+    showSlide(currentIndex);
 }
 
-prev.addEventListener('click', () => {
-    index = (index === 0) ? slides.length - 1 : index - 1;
-    showSlide(index);
-});
+function prevSlide() {
+    currentIndex = currentIndex - 1 < 0 ? slides.length - 1 : currentIndex - 1;
+    showSlide(currentIndex);
+}
 
-next.addEventListener('click', () => {
-    nextSlide();
-});
+function startAutoSlide() {
+    interval = setInterval(nextSlide, 7000);
+}
 
-// Автоматическая смена слайдов каждые 5 секунд
-setInterval(() => {
-    nextSlide();
-}, 5000);
+function stopAutoSlide() {
+    clearInterval(interval);
+}
 
-// Стилизация кнопок "Просмотреть туры" при наведении
-tourButtons.forEach(button => {
-    button.addEventListener('mouseover', () => {
-        button.style.background = "#e65b50";
-        button.style.transform = "scale(1.1)";
+function handleScroll(event) {
+    if (window.scrollY > scrollPosition) {
+        // Прокрутка вниз - следующий слайд
+        nextSlide();
+    } else {
+        // Прокрутка вверх - предыдущий слайд
+        prevSlide();
+    }
+    scrollPosition = window.scrollY; // Обновляем позицию прокрутки
+}
+
+// Обработчик прокрутки
+window.addEventListener('scroll', handleScroll);
+
+controls.forEach(control => {
+    control.addEventListener('click', (event) => {
+        stopAutoSlide();
+        if (event.target.classList.contains('prev')) {
+            prevSlide();
+        } else if (event.target.classList.contains('next')) {
+            nextSlide();
+        }
+        startAutoSlide();
     });
-    button.addEventListener('mouseleave', () => {
-        button.style.background = "#ff6f61";
-        button.style.transform = "scale(1)";
-    });
 });
+
+showSlide(currentIndex);
+startAutoSlide();

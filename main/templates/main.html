@@ -88,8 +88,8 @@
                     <div class="col-lg-6">
                         <div class="tn-right">
                             <div class="top-social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <!-- <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a> -->
                                 <a href="https://wa.me/996220019561?text=Привет,%20напишите%20мне" target="_blank">
                                     <i class="fa fa-whatsapp"></i>
                                 </a>
@@ -100,12 +100,12 @@
                                     <i class="fa fa-instagram"></i></a>
                             </div>
                             <div class="language-option">
-                                <img src="../../static/img/flag.jpg" alt="">
-                                <span>EN <i class="fa fa-angle-down"></i></span>
+                                <img src="../../static/img/rus-flag.png" alt="">
+                                <span>RU <i class="fa fa-angle-down"></i></span>
                                 <div class="flag-dropdown">
                                     <ul>
-                                        <li><a href="#">Zi</a></li>
-                                        <li><a href="#">Fr</a></li>
+                                        <li><a href="#">RU</a></li>
+                                        <li><a href="#">EN</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -120,7 +120,7 @@
                     <div class="col-lg-2">
                         <div class="logo">
                             <a href="/">
-                                <img src="../../static/icon/logo-ver4.svg" alt="" width="140" height="70">
+                                <img src="../../static/icon/logo-ver5.svg" alt="" width="140" height="70">
                             </a>
                         </div>
                     </div>
@@ -153,59 +153,23 @@
         </div>
     </header>
 
+
     <div class="slider-container">
-        <div class="slider">
-            <div class="slide">
-                <div class="slide-images">
-                    <img src="../../static/img/Кел-Суу.JPG" alt="Кел-Суу">
-                    <img src="../../static/img/Калмак-Ашуу.JPG" alt="Калмак-Ашуу">
-                    <img src="../../static/img/Иссык-Куль.JPG" alt="Иссык-Куль">
-                </div>
-                <div class="slide-text">Путешествуйте по Кыргызстану</div>
-                <a href="/tours/1" class="tour-button">Просмотреть туры</a>
-            </div>
-            <div class="slide">
-                <div class="slide-images">
-                    <img src="../../static/img/Кел-Суу.JPG" alt="Сон-Куль">
-                    <img src="../../static/img/Калмак-Ашуу.JPG" alt="Ала-Арча">
-                    <img src="../../static/img/Иссык-Куль.JPG" alt="Сары-Челек">
-                </div>
-                <div class="slide-text">Озера и горные долины ждут вас</div>
-                <a href="/tours/2" class="tour-button">Просмотреть туры</a>
-            </div>
-            <div class="slide">
-                <div class="slide-images">
-                    <img src="../../static/img/Кел-Суу.JPG" alt="Чатыр-Коль">
-                    <img src="../../static/img/Калмак-Ашуу.JPG" alt="Тянь-Шань">
-                    <img src="../../static/img/Иссык-Куль.JPG" alt="Каракол">
-                </div>
-                <div class="slide-text">Исследуйте дикие просторы</div>
-                <a href="/tours/3" class="tour-button">Просмотреть туры</a>
-            </div>
-        </div>
-        <button class="controls prev">&#10094;</button>
-        <button class="controls next">&#10095;</button>
-    </div>
-
-
-
-
-    <!-- <div class="slider-container">
         <div class="slider">
             <div class="slide active" style="background-image: url('../../static/img/Кел-Суу.JPG');">
                 <div class="slide-text">Откройте для себя новые горизонты</div>
             </div>
-            <div class="slide" style="background-image: url('../../static/img/Калмак-Ашуу.JPG');">
+            <div class="slide" style="background-image: url('../../static/img/bugu.JPG');">
                 <div class="slide-text">Лучшие направления для отдыха</div>
             </div>
-            <div class="slide" style="background-image: url('../../static/img/Иссык-Куль.JPG');">
+            <div class="slide" style="background-image: url('../../static/img/IK_XanTengry.JPG');">
                 <div class="slide-text">Незабываемые впечатления ждут вас</div>
             </div>
 
             <img class="prev controlls" src="../../static/img/left.png" alt="">
             <img class="next controlls" src="../../static/img/right.png" alt="">
         </div>
-    </div> -->
+    </div>
 
 
     <div class="text-tour-type">
@@ -232,6 +196,34 @@
     </section>
 
 
+<!-- Кнопка для открытия модального окна -->
+<button class="yyy" id="openModal">Напишите нам</button>
+
+<!-- Модальное окно -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Напишите нам</h2>
+        <form id="contactForm">
+            {% csrf_token %}
+            <label for="name">Имя:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Сообщение:</label>
+            <textarea id="message" name="message" required></textarea>
+            <button type="submit">Отправить</button>
+        </form>
+        <p id="responseMessage"></p>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    const sendMessageUrl = "{% url 'main:send_message' %}";
+</script>
+
+  
     <footer class="footer-section">
         <div class="container">
             <div class="footer-text">
@@ -309,6 +301,7 @@
     <script src="static/js/owl.carousel.min.js"></script>
     <script src="static/js/main.js"></script>
     <script src="static/js/slider.js"></script>
+    <script src="static/js//modal.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
 
 </body>

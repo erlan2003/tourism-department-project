@@ -1,108 +1,137 @@
-/* Основной контейнер слайдера */
-.slider-container {
-    width: 90%;
-    margin: auto;
+.yyy{
+    top: 650px;
+    left: 1300px;
+    position: fixed;
+}
+
+.modal {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
-    position: relative;
-    padding-top: 20px;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
 }
 
-/* Слайдер */
-.slider {
-    display: flex;
-    transition: transform 0.8s ease-in-out;
-}
-
-.slide {
-    min-width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
     padding: 20px;
-    position: relative;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
 }
 
-/* Контейнер для изображений */
-.slide-images {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-}
-
-.slide img {
-    width: 30%;
-    height: 320px;
-    object-fit: cover;
-    border-radius: 15px;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.slide img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* Текст внутри слайдера */
-.slide-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.6);
-    color: white;
-    padding: 15px 25px;
-    border-radius: 10px;
-    font-size: 22px;
-    text-align: center;
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
     font-weight: bold;
 }
 
-/* Кнопка "Просмотреть туры" */
-.tour-button {
-    position: absolute;
-    bottom: 70px;
-    left: 43%;
-    background: #ff6f61;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 8px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
+.close:hover,
+.close:focus {
+    color: black;
     text-decoration: none;
+    cursor: pointer;
 }
 
-.tour-button:hover {
-    background: #e65b50;
-    transform: scale(1.05);
+form {
+    display: flex;
+    flex-direction: column;
 }
 
-/* Кнопки управления */
-.controls {
+form input, form textarea {
+    margin: 10px 0;
+    padding: 8px;
+    font-size: 16px;
+}
+
+form button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+.slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 1500px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
+}
+
+.slider {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 500px;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide-text {
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 20px 30px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Стили для кнопок управления */
+.controlls {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.8);
-    color: #ff6f61;
-    border: none;
+    width: 50px;
+    height: 50px;
     cursor: pointer;
-    padding: 12px 15px;
-    font-size: 28px;
+    background: rgba(0, 0, 0, 0.5);
     border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: background 0.3s, transform 0.2s;
+    transition: background 0.3s;
 }
 
-.controls:hover {
-    background: rgba(255, 255, 255, 1);
-    transform: scale(1.1);
+.controlls:hover {
+    background: rgba(0, 0, 0, 0.8);
 }
 
-.prev { left: 20px; }
-.next { right: 20px; }
+.prev {
+    left: 15px;
+}
+
+.next {
+    right: 15px;
+}
 
 .text-tour-type{
 	padding-top: 40px;
