@@ -1,7 +1,7 @@
 {% extends "main/base.html" %}
 {% load static %}
 
-{% block title %}{{ tour_type.name }} | NomadSky{% endblock %}
+{% block title %}{{ tour_type.name }} | SkyNomad{% endblock %}
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/tours.css' %}" type="text/css">
@@ -58,4 +58,34 @@
         </div>
     </div>
 </section>
+
+   <!-- Кнопка для открытия модального окна -->
+   <button class="openModal">Напишите нам</button>
+
+   <!-- Модальное окно -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Напишите нам</h2>
+            <form id="contactForm">
+                {% csrf_token %}
+                <label for="name">Имя:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Сообщение:</label>
+                <textarea id="message" name="message" required></textarea>
+                
+                <button type="submit">Отправить</button>
+            </form>
+            <p id="responseMessage"></p>
+        </div>
+    </div>
+
+
+   <script type="text/javascript">
+       const sendMessageUrl = "{% url 'main:send_message' %}";
+   </script>
 {% endblock %}

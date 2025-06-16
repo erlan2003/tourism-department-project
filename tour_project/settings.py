@@ -113,7 +113,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'kudajberdieverlan7@gmail.com'  # ваш email
-EMAIL_HOST_PASSWORD = 'melz djit shqp ngkh'  # ваш пароль приложения
+EMAIL_HOST_PASSWORD = 'nssz wcbg vwps ibch'  # ваш пароль приложения
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 
